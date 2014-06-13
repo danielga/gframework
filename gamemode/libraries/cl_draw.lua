@@ -71,7 +71,7 @@ function gframework.draw:CreateCircle(centerx, centery, radius, detail, texture,
 end
 
 function gframework.draw:DrawCircle(data)
-	if data.type != CIRCLE then
+	if data.type ~= CIRCLE then
 		return
 	end
 
@@ -106,7 +106,7 @@ function gframework.draw:CreateCircumference(centerx, centery, radius, detail, t
 end
 
 function gframework.draw:DrawCircumference(data)
-	if data.type != CIRCUMFERENCE then
+	if data.type ~= CIRCUMFERENCE then
 		return
 	end
 

@@ -17,7 +17,7 @@ function gframework.door:GetTitle(door)
 end
 
 function gframework.door:HasTitle(door)
-	return self:GetTitle(door) != nil
+	return self:GetTitle(door) ~= nil
 end
 
 function gframework.door:SetOwner(door, owner)

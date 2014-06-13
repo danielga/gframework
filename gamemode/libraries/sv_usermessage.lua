@@ -50,7 +50,7 @@ local function PrepareTable(name, ...)
 
 		if size + itemsize > maxsize then
 			if itemtype == "string" and size < maxsize then
-				//do nothing
+				--do nothing
 			else
 				table.insert(newtbl[index], UMSG_TYPE_STOP)
 				index = index + 1
@@ -179,7 +179,7 @@ function gframework.usermessage:SendUsermessage(name, recipient, ...)
 						end
 					end
 				elseif itemtype == UMSG_TYPE_NIL then
-					//do nothing
+					--do nothing
 				elseif itemtype == UMSG_TYPE_STOP or itemtype == UMSG_TYPE_END then
 					break
 				end

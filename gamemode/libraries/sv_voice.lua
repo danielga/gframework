@@ -84,7 +84,7 @@ function gframework.voice:PlayerCanHearPlayer(talker, listener)
 	return false
 end
 
-local function gframeworkPlayerCanHearPlayersVoice(listener, talker) //Receives 2 boolean returns, one for allowing and another for ranged talking
+local function gframeworkPlayerCanHearPlayersVoice(listener, talker) --Receives 2 boolean returns, one for allowing and another for ranged talking
 	if gframework.voice:PlayerCanHearPlayer(talker, listener) then
 		return true, false
 	end
