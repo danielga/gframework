@@ -1,7 +1,9 @@
-gframework.voice = {}
+gframework.voice = gframework.voice or {}
 
 local voiceChannels = {}
 local voiceChannelsActive = false
+
+local PLAYER = FindMetaTable("Player")
 
 function gframework.voice:SetChannelsActive(boolean)
 	voiceChannelsActive = boolean
@@ -21,7 +23,7 @@ function gframework.voice:AddPlayerToChannel(ply, channel)
 	end
 end
 
-function _R.Player:AddVoiceChannel(channel)
+function PLAYER:AddVoiceChannel(channel)
 	gframework.voice:AddPlayerToChannel(self, channel)
 end
 
@@ -36,7 +38,7 @@ function gframework.voice:RemovePlayerFromChannel(ply, channel)
 	end
 end
 
-function _R.Player:RemoveVoiceChannel(channel)
+function PLAYER:RemoveVoiceChannel(channel)
 	gframework.voice:RemovePlayerFromChannel(self, channel)
 end
 
@@ -54,7 +56,7 @@ function gframework.voice:GetPlayerChannels(ply)
 	return channels
 end
 
-function _R.Player:GetVoiceChannels()
+function PLAYER:GetVoiceChannels()
 	return gframework.voice:GetPlayerChannels(self)
 end
 
@@ -91,4 +93,4 @@ local function gframeworkPlayerCanHearPlayersVoice(listener, talker) --Receives 
 
 	return false, false
 end
-gframework.hook:Add("PlayerCanHearPlayersVoice", "gframework.voice.PlayerCanHearPlayersVoice", gframeworkPlayerCanHearPlayersVoice)
+hook.Add("PlayerCanHearPlayersVoice", "gframework.voice.PlayerCanHearPlayersVoice", gframeworkPlayerCanHearPlayersVoice)

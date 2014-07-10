@@ -1,7 +1,7 @@
-gframework.door = {}
+gframework.door = gframework.door or {}
 
 function gframework.door:IsDoor(entity)
-	return IsValid(entity) and string.find(entity:GetClass(), "door") or false
+	return IsValid(entity) and entity:GetClass():find("door") or false
 end
 
 function gframework.door:GetOwner(door)
