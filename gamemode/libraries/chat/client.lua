@@ -12,7 +12,7 @@ function gframework.chat:PlaySound()
 	chat.PlaySound()
 end
 
-local function gframeworkReceiveText(msg)
-	chat.AddText(unpack(msg:GetTable()))
+local function gframeworkReceiveText(len)
+	chat.AddText(unpack(net.ReadTable()))
 end
-usermessage.Hook("gfwchat", gframeworkReceiveText)
+net.Receive("gfwchat", gframeworkReceiveText)
