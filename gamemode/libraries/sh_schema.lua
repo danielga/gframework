@@ -44,7 +44,7 @@ function gframework.schema:Initialize()
 	local sh_schema = name .. "/schema/sh_schema.lua"
 	local sv_init = name .. "/schema/sv_init.lua"
 	local cl_init = name .. "/schema/cl_init.lua"
-	if not file.Exists(sh_schema, "LUA") or not file.Exists(sv_init, "LUA") or not file.Exists(cl_init, "LUA") then
+	if not file.Exists(sh_schema, "LUA") or (SERVER and not file.Exists(sv_init, "LUA")) or (CLIENT and not file.Exists(cl_init, "LUA")) then
 		print("gframework was unable to initialize the schema '" .. name .. "'.")
 		return
 	end
@@ -52,7 +52,8 @@ function gframework.schema:Initialize()
 	SCHEMA = gframework.schema.table
 	SCHEMA.FolderName = name
 
-	gframework:Include(path)
+	gframework:Include(sh_schema)
+	gframework:Include(SERVER and sv_init or cl_init)
 end
 
 gframework.schema:Initialize()
